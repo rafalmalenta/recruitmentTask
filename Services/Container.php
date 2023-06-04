@@ -3,6 +3,7 @@
 namespace Services;
 
 use Factory\ExchangeRateFactory;
+use Renderer\Renderer;
 use Repository\ExchangeRateRepository;
 
 class Container
@@ -12,6 +13,7 @@ class Container
     private ?APIHandler $APIHandler = null;
     private ?ExchangeRateFactory $exchangeRateFactory = null;
     private ?ExchangeRateRepository $exchangeRateRepository = null;
+    private ?Renderer $tableRenderer = null;
     public function __construct(array $configuration)
     {
         $this->configuration = $configuration;
@@ -59,5 +61,14 @@ class Container
         }
 
         return $this->exchangeRateRepository = new ExchangeRateRepository($this->getPDO(), $this->getExchangeRateFactory());
+    }
+
+    public function getRenderer(): Renderer
+    {
+        if(null !== $this->tableRenderer){
+            return $this->tableRenderer;
+        }
+
+        return $this->tableRenderer = new Renderer();
     }
 }
