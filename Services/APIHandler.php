@@ -2,17 +2,22 @@
 
 namespace Services;
 
+use Factory\ExchangeRateFactory;
+use Model\ExchangeRate;
+
 class APIHandler
 {
     private string $NBPApi;
-    private array $exchangeRates;
+    private ExchangeRateFactory $factory;
 
-    public function __construct(string $NBPApi)
+    public function __construct(string $NBPApi, ExchangeRateFactory $factory)
     {
         $this->NBPApi = $NBPApi;
+        $this->factory = $factory;
     }
 
-    public function fetchExchangeRates(): void
+    /** @return ExchangeRate[] */
+    public function fetchExchangeRates(): array
     {
         $ch = curl_init();
         $headers = ['Accept: application/json'];
@@ -30,11 +35,8 @@ class APIHandler
         }
 
         curl_close($ch);
-        $this->exchangeRates = json_decode($response,true)[0]["rates"];
+        $rates = json_decode($response,true)[0]["rates"];
+        return $this->factory->createArray($rates);
     }
 
-    public function getExchangeRates(): ?array
-    {
-        return $this->exchangeRates;
-    }
 }
