@@ -6,18 +6,18 @@ API NBP: http://api.nbp.pl/
 
 ***Wymagania:***
 
-Utwórz nową bazę danych MySQL i skonfiguruj połączenie z bazą.
+1. Utwórz nową bazę danych MySQL i skonfiguruj połączenie z bazą.
 Napisz odpowiednie klasy lub metody, które będą odpowiedzialne za komunikację z API NBP i pobranie kursów walut.
 Zapisz pobrane kursy walut do bazy danych.
-Utwórz klasę lub funkcję, która będzie generować tabelę z kursami walut na podstawie danych z bazy danych.
-Stwórz formularz, który umożliwi użytkownikowi wpisanie kwoty oraz wybranie dwóch walut: waluty źródłowej i waluty docelowej.
-Napisz odpowiednie klasy lub metody, które będą przewalutowywać podaną kwotę z jednej waluty na drugą, korzystając z danych z bazy danych.
-Zapisz wyniki przewalutowań do bazy danych wraz z informacjami o walutach źródłowej, docelowej i przewalutowanej kwocie.
-Wyświetl listę ostatnich wyników przewalutowań wraz z informacjami o walutach źródłowej, docelowej i przewalutowanej kwocie. Wykorzystaj dane z bazy danych.
-Wykorzystaj podejście obiektowe w kodzie, stosując dobre praktyki związane z programowaniem obiektowym w czystym PHP.
-Zadbaj o odpowiednie zabezpieczenie aplikacji, takie jak walidacja danych wejściowych, obsługa błędów itp.
-Zwróć uwagę na estetykę pracy i kodu. Staraj się zachować czytelność, odpowiednie formatowanie i nazewnictwo zmiennych.
-Podczas oceny rozwiązania będziemy brać pod uwagę:
+2. Utwórz klasę lub funkcję, która będzie generować tabelę z kursami walut na podstawie danych z bazy danych.
+3. Stwórz formularz, który umożliwi użytkownikowi wpisanie kwoty oraz wybranie dwóch walut: waluty źródłowej i waluty docelowej.
+4. Napisz odpowiednie klasy lub metody, które będą przewalutowywać podaną kwotę z jednej waluty na drugą, korzystając z danych z bazy danych.
+5. Zapisz wyniki przewalutowań do bazy danych wraz z informacjami o walutach źródłowej, docelowej i przewalutowanej kwocie.
+6. Wyświetl listę ostatnich wyników przewalutowań wraz z informacjami o walutach źródłowej, docelowej i przewalutowanej kwocie. Wykorzystaj dane z bazy danych.
+7. Wykorzystaj podejście obiektowe w kodzie, stosując dobre praktyki związane z programowaniem obiektowym w czystym PHP.
+8. Zadbaj o odpowiednie zabezpieczenie aplikacji, takie jak walidacja danych wejściowych, obsługa błędów itp.
+9. Zwróć uwagę na estetykę pracy i kodu. Staraj się zachować czytelność, odpowiednie formatowanie i nazewnictwo zmiennych.
+10. Podczas oceny rozwiązania będziemy brać pod uwagę:
 
 Poprawność działania aplikacji
 Jakość kodu (czytelność, organizacja, nazewnictwo zmiennych, komentarze itp.)
