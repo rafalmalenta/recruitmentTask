@@ -40,7 +40,7 @@ class ExchangeRateRepository
         try {
             $this->pdo->exec($insertMultiple);
         }catch (\PDOException $exception){
-            die('Database connection failed');
+            die('Database connection failed'. $exception->getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ class ExchangeRateRepository
         try {
             $this->pdo->exec($sql);
         }catch (\PDOException $exception){
-            die('Database connection failed');
+            die('Database connection failed'. $exception->getMessage());
         }
     }
 }

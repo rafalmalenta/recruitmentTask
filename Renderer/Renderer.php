@@ -2,6 +2,7 @@
 
 namespace Renderer;
 
+use Model\ExchangeHistory;
 use Model\ExchangeRate;
 
 class Renderer
@@ -43,5 +44,30 @@ class Renderer
 
         $currencySelect .= "</select>";
         echo $currencySelect;
+    }
+
+    /** @param ExchangeHistory[] $exchangesHistory */
+    public function renderExchangeHistory(array $exchangesHistory): void
+    {
+        $table = "<table style='position: relative; margin: auto;'>
+            <thead>
+                <td>exchanged amount</td>
+                <td>from</td>
+                <td>to</td>
+                <td>amount received</td>
+            </thead>";
+        foreach ($exchangesHistory as $exchangeHistory){
+            $table .= "<tr style='border-bottom: 1pt solid black;'>";
+            $table .= sprintf(
+                "<td >%.2f</td><td>%s</td><td>%s</td><td>%.2f</td>",
+                $exchangeHistory->getOriginalAmount(),
+                $exchangeHistory->getFromCurrency(),
+                $exchangeHistory->getToCurrency(),
+                $exchangeHistory->getAmountReceived()
+            );
+            $table .= "</tr>";
+        }
+        $table .= "</table>";
+        echo $table;
     }
 }
