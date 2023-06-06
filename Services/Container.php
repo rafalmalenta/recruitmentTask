@@ -3,14 +3,19 @@
 namespace Services;
 
 use Factory\ExchangeHistoryFactory;
+use Factory\ExchangeHistoryFactoryInterface;
 use Factory\ExchangeRateFactory;
+use Factory\ExchangeRateFactoryInterface;
 use Factory\FormFactory;
-use Form\Form;
+use Factory\FormFactoryInterface;
 use PDO;
 use PDOException;
 use Renderer\Renderer;
+use Renderer\RendererInterface;
 use Repository\ExchangeHistoryRepository;
+use Repository\ExchangeHistoryRepositoryInterface;
 use Repository\ExchangeRateRepository;
+use Repository\ExchangeRateRepositoryInterface;
 
 class Container
 {
@@ -66,7 +71,7 @@ class Container
 
         return $this->APIHandler = new APIHandler($this->configuration['NBPApi'], $this->getExchangeRateFactory());
     }
-    public function getExchangeRateFactory(): ExchangeRateFactory
+    public function getExchangeRateFactory(): ExchangeRateFactoryInterface
     {
         if(null !== $this->exchangeRateFactory){
             return $this->exchangeRateFactory;
@@ -75,7 +80,7 @@ class Container
         return $this->exchangeRateFactory = new ExchangeRateFactory();
     }
 
-    public function getExchangeRateRepository(): ExchangeRateRepository
+    public function getExchangeRateRepository(): ExchangeRateRepositoryInterface
     {
         if(null !== $this->exchangeRateRepository){
             return $this->exchangeRateRepository;
@@ -84,7 +89,7 @@ class Container
         return $this->exchangeRateRepository = new ExchangeRateRepository($this->getPDO(), $this->getExchangeRateFactory());
     }
 
-    public function getExchangeHistoryRepository(): ExchangeHistoryRepository
+    public function getExchangeHistoryRepository(): ExchangeHistoryRepositoryInterface
     {
         if(null !== $this->exchangeHistoryRepository){
             return $this->exchangeHistoryRepository;
@@ -93,7 +98,7 @@ class Container
         return $this->exchangeHistoryRepository = new ExchangeHistoryRepository($this->getPDO(), $this->getExchangeHistoryFactory());
     }
 
-    public function getRenderer(): Renderer
+    public function getRenderer(): RendererInterface
     {
         if(null !== $this->tableRenderer){
             return $this->tableRenderer;
@@ -102,7 +107,7 @@ class Container
         return $this->tableRenderer = new Renderer();
     }
 
-    public function getExchangeHistoryFactory(): ExchangeHistoryFactory
+    public function getExchangeHistoryFactory(): ExchangeHistoryFactoryInterface
     {
         if(null !== $this->exchangeHistoryFactory){
             return $this->exchangeHistoryFactory;
@@ -111,7 +116,7 @@ class Container
         return $this->exchangeHistoryFactory = new ExchangeHistoryFactory();
     }
 
-    public function getFormFactory(): FormFactory
+    public function getFormFactory(): FormFactoryInterface
     {
         if(null !== $this->formFactory){
             return $this->formFactory;

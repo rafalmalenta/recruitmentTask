@@ -3,10 +3,13 @@
 namespace Form;
 
 use Factory\ExchangeHistoryFactory;
+use Factory\ExchangeHistoryFactoryInterface;
 use Model\ExchangeHistory;
+use Model\ExchangeHistoryInterface;
 use Model\ExchangeRate;
+use Model\ExchangeRateInterface;
 
-class Form
+class Form implements FormInterface
 {
     private string $amount;
     private string $fromCode;
@@ -36,7 +39,7 @@ class Form
         return $this->amountReceived;
     }
 
-    public function __construct(string $amount, string $fromCode, string $toCode, array $exchangeRates, ExchangeHistoryFactory $exchangeHistoryFactory)
+    public function __construct(string $amount, string $fromCode, string $toCode, array $exchangeRates, ExchangeHistoryFactoryInterface $exchangeHistoryFactory)
     {
         $this->amount = $amount;
         $this->fromCode = $fromCode;
@@ -87,7 +90,7 @@ class Form
 
     }
 
-    public function getData(): ExchangeHistory
+    public function getData(): ExchangeHistoryInterface
     {
         return $this->exchangeHistoryFactory->createNew($this->amount, $this->fromCode, $this->toCode, $this->amountReceived);
     }
@@ -102,7 +105,7 @@ class Form
         return false;
     }
 
-    private function getExchangeRateByCode(string $code): ?ExchangeRate
+    private function getExchangeRateByCode(string $code): ?ExchangeRateInterface
     {
         foreach ($this->exchangeRates as $exchangeRate){
             if($exchangeRate->getCode() === $code){

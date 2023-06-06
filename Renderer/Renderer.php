@@ -2,12 +2,12 @@
 
 namespace Renderer;
 
-use Model\ExchangeHistory;
-use Model\ExchangeRate;
+use Model\ExchangeHistoryInterface;
+use Model\ExchangeRateInterface;
 
-class Renderer
+class Renderer implements RendererInterface
 {
-    /** @param ExchangeRate[] $exchangeRates */
+    /** @param ExchangeRateInterface[] $exchangeRates */
     public function renderTable(array $exchangeRates): void
     {
         $table = "<table style='position: relative; margin: auto;'>
@@ -32,7 +32,7 @@ class Renderer
         echo $table;
     }
 
-    /** @param ExchangeRate[] $exchangeRates */
+    /** @param ExchangeRateInterface[] $exchangeRates */
     public function renderCurrencySelect(string $name, array $exchangeRates): void
     {
         $currencySelect = "<label for=\"$name\">Pick currency:</label>
@@ -46,10 +46,10 @@ class Renderer
         echo $currencySelect;
     }
 
-    /** @param ExchangeHistory[] $exchangesHistory */
+    /** @param ExchangeHistoryInterface[] $exchangesHistory */
     public function renderExchangeHistory(array $exchangesHistory): void
     {
-        $table = "<table style='position: relative; margin: auto;'>
+        $table = "<table style='width:400px;position: relative; margin: auto;'>
             <thead>
                 <td>exchanged amount</td>
                 <td>from</td>

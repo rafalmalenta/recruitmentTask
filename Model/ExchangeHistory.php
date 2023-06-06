@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class ExchangeHistory
+class ExchangeHistory implements ExchangeHistoryInterface
 {
     private float $originalAmount;
     private string $fromCurrency;

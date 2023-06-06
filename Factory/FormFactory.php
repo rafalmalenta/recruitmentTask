@@ -4,11 +4,11 @@ namespace Factory;
 
 use Form\Form;
 
-class FormFactory
+class FormFactory implements FormFactoryInterface
 {
     private ExchangeHistoryFactory $exchangeHistoryFactory;
 
-    public function __construct(ExchangeHistoryFactory $exchangeHistoryFactory)
+    public function __construct(ExchangeHistoryFactoryInterface $exchangeHistoryFactory)
     {
         $this->exchangeHistoryFactory = $exchangeHistoryFactory;
     }

@@ -3,21 +3,22 @@
 namespace Repository;
 
 use Factory\ExchangeRateFactory;
-use Model\ExchangeRate;
+use Factory\ExchangeRateFactoryInterface;
+use Model\ExchangeRateInterface;
 use PDO;
 
-class ExchangeRateRepository
+class ExchangeRateRepository implements ExchangeRateRepositoryInterface
 {
     private PDO $pdo;
     private ExchangeRateFactory $factory;
 
-    public function __construct(PDO $pdo, ExchangeRateFactory $factory)
+    public function __construct(PDO $pdo, ExchangeRateFactoryInterface $factory)
     {
         $this->pdo = $pdo;
         $this->factory = $factory;
     }
 
-    /** @param ExchangeRate[] $exchangeRates */
+    /** @param ExchangeRateInterface[] $exchangeRates */
     public function saveAll(array $exchangeRates): void
     {
         $this->truncate();
@@ -44,7 +45,7 @@ class ExchangeRateRepository
         }
     }
 
-    /** @return ExchangeRate[] */
+    /** @return ExchangeRateInterface[] */
     public function getAll(): array
     {
         $sql = "SELECT name, code, bid, ask FROM exchange_rates;";

@@ -2,24 +2,22 @@
 
 namespace Repository;
 
-use Factory\ExchangeHistoryFactory;
-use Form\Form;
-use Model\ExchangeHistory;
-use Model\ExchangeRate;
+use Factory\ExchangeHistoryFactoryInterface;
+use Model\ExchangeHistoryInterface;
 use PDO;
 
-class ExchangeHistoryRepository
+class ExchangeHistoryRepository implements ExchangeHistoryRepositoryInterface
 {
     private PDO $pdo;
-    private ExchangeHistoryFactory $exchangeHistoryFactory;
+    private ExchangeHistoryFactoryInterface $exchangeHistoryFactory;
 
-    public function __construct(PDO $pdo, ExchangeHistoryFactory $exchangeHistoryFactory)
+    public function __construct(PDO $pdo, ExchangeHistoryFactoryInterface $exchangeHistoryFactory)
     {
         $this->pdo = $pdo;
         $this->exchangeHistoryFactory = $exchangeHistoryFactory;
     }
 
-    public function save(ExchangeHistory $exchangeHistory): void
+    public function save(ExchangeHistoryInterface $exchangeHistory): void
     {
         $insert = sprintf(
     "INSERT INTO exchange_history (original_amount, from_currency, to_currency, amount_received) VALUES (%f, '%s', '%s',%f)",
@@ -36,7 +34,7 @@ class ExchangeHistoryRepository
         }
     }
 
-    /** @return ExchangeHistory[] */
+    /** @return ExchangeHistoryInterface[] */
     public function getAll(): array
     {
         $sql = "SELECT original_amount, from_currency, to_currency, amount_received FROM exchange_history;";

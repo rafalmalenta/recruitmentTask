@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class ExchangeRate
+class ExchangeRate implements ExchangeRateInterface
 {
     private string $name;
     private string $code;

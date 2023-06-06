@@ -3,20 +3,21 @@
 namespace Services;
 
 use Factory\ExchangeRateFactory;
-use Model\ExchangeRate;
+use Factory\ExchangeRateFactoryInterface;
+use Model\ExchangeRateInterface;
 
 class APIHandler
 {
     private string $NBPApi;
     private ExchangeRateFactory $factory;
 
-    public function __construct(string $NBPApi, ExchangeRateFactory $factory)
+    public function __construct(string $NBPApi, ExchangeRateFactoryInterface $factory)
     {
         $this->NBPApi = $NBPApi;
         $this->factory = $factory;
     }
 
-    /** @return ExchangeRate[] */
+    /** @return ExchangeRateInterface[] */
     public function fetchExchangeRates(): array
     {
         $ch = curl_init();

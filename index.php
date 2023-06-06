@@ -40,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php $tableRenderer->renderTable($rates);?>
 
     <form method="POST" style="margin: auto;width: 50%;">
+        <div style="text-align: center">Exchange currency</div>
         <input type="text" name="amount" placeholder="amount"/>
 
         <?php
@@ -49,7 +50,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <input type="submit" value="exchange">
     </form>
-<?php $tableRenderer->renderExchangeHistory($exchangeHistory);?>
+<?php
+if(count($exchangeHistory) > 0){
+    $tableRenderer->renderExchangeHistory($exchangeHistory);
+    }
+    ?>
 
 </html>
 

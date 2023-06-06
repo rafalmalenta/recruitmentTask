@@ -3,14 +3,15 @@
 namespace Factory;
 
 use Model\ExchangeRate;
+use Model\ExchangeRateInterface;
 
-class ExchangeRateFactory
+class ExchangeRateFactory implements ExchangeRateFactoryInterface
 {
-    public function createNew(string $name, string $code, float $bid, float $ask): ExchangeRate
+    public function createNew(string $name, string $code, float $bid, float $ask): ExchangeRateInterface
     {
         return new ExchangeRate($name, $code, $bid, $ask);
     }
-    /** @return ExchangeRate[] */
+    /** @return ExchangeRateInterface[] */
     public function createArray(array $rates): array
     {
         $exchangeRates = [];
