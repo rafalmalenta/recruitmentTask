@@ -3,6 +3,7 @@
 require __DIR__.'/bootstrap.php';
 
 use Services\Container;
+use Validator\Validator;
 
 $container = new Container($configuration);
 $container->init();
@@ -21,8 +22,8 @@ $tableRenderer = $container->getRenderer();
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     $formFactory = $container->getFormFactory();
     $form = $formFactory->createNew($_POST['amount'], $_POST['from'], $_POST['to'], $rates);
-
-    if ($form->isValid()) {
+    $validator = new Validator($form, $exchangeRates);
+    if ($validator->isValid()) {
         $form->exchange();
         $exchange = $form->getData();
         $exchangeHistoryRepository->save($exchange);
@@ -30,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<meta http-equiv='refresh' content='0'>";
     } else {
 
-        $form->printErrors();
+        $validator->printErrors();
     }
 }
 

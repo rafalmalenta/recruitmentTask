@@ -22,14 +22,14 @@ class Container
     private array $configuration;
     private ?PDO $pdo = null;
     private ?APIHandler $APIHandler = null;
-    private ?ExchangeRateFactory $exchangeRateFactory = null;
-    private ?ExchangeRateRepository $exchangeRateRepository = null;
-    private ?ExchangeHistoryRepository $exchangeHistoryRepository = null;
+    private ?ExchangeRateFactoryInterface $exchangeRateFactory = null;
+    private ?ExchangeRateRepositoryInterface $exchangeRateRepository = null;
+    private ?ExchangeHistoryRepositoryInterface $exchangeHistoryRepository = null;
 
-    private ?ExchangeHistoryFactory $exchangeHistoryFactory = null;
+    private ?ExchangeHistoryFactoryInterface $exchangeHistoryFactory = null;
 
-    private ?FormFactory $formFactory = null;
-    private ?Renderer $tableRenderer = null;
+    private ?FormFactoryInterface $formFactory = null;
+    private ?RendererInterface $tableRenderer = null;
     private string $database;
 
     public function __construct(array $configuration)

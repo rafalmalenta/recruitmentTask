@@ -15,10 +15,6 @@ interface FormInterface
 
     public function getAmountReceived(): float;
 
-    public function isValid(): bool;
-
-    public function printErrors(): void;
-
     public function exchange();
 
     public function getData(): ExchangeHistoryInterface;
