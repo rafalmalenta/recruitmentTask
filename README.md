@@ -29,3 +29,15 @@ Wysyłka zadania:
 
 Przygotuj repozytorium na platformie GitHub i udostępnij kod źródłowy aplikacji na publicznym repozytorium. Prześlij link do repozytorium jako część rozwiązania zadania.
 Prześlij również link do działającej wersji aplikacji na serwerze, gdzie można zobaczyć demo działania aplikacji.
+
+## Uruchomienie
+
+```bash
+docker-compose up
+```
+
+aplikacja będzie dostępna na porcie 8100
+
+## Wersja do oklikania 
+
+[link](http://rectask.rafalmalenta.usermd.net)
